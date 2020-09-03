@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <canvas id="canvas" width="300" height="150"></canvas>
+        <ul class="input-list">
+            <li>
+                <label class="input-color black">
+                    <input type="radio" name="color" value="black" checked>
+                </label>
+            </li>
+            <li>
+                <label class="input-color red">
+                    <input type="radio" name="color" value="red">
+                </label>
+            </li>
+            <li>
+                <label class="input-color blue">
+                    <input type="radio" name="color" value="blue">
+                </label>
+            </li>
+            <li>
+                <label class="input-color green">
+                    <input type="radio" name="color" value="green">
+                </label>
+            </li>
+            <li>
+                <label class="input-color purple">
+                    <input type="radio" name="color" value="purple">
+                </label>
+            </li>
+        </ul>
+        <ul class="input-list">
+            <li>
+                <label class="input-size small">
+                    <input type="radio" name="size" value="1" checked>
+                </label>
+            </li>
+            <li>
+                <label class="input-size mid">
+                    <input type="radio" name="size" value="4">
+                </label>
+            </li>
+            <li>
+                <label class="input-size large">
+                    <input type="radio" name="size" value="8">
+                </label>
+            </li>
+        </ul>
+        <button class="btn" id="cleaner">Очистить</button>
+        <button class="btn" id="saver">Сохранить</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+ul {
+    list-style: none;
+}
+
+#canvas {
+    border: 1px solid #000;
+}
+
+.container {
+    margin: 40px auto;
+    max-width: 1280px;
+}
+
+.input-list {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.input-list li {
+    margin: 0 12px;
+}
+
+.input-color {
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 20px;
+}
+
+.input-color input {
+    cursor: pointer;
+    height: 0px;
+    width: 0px;
+}
+
+.input-color input::before {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    transition: all .2s;
+    width: 100%;
+}
+
+.input-color input:hover::before {
+    opacity: 0.9;
+} 
+
+.input-color input:checked::before {
+    opacity: 1;
+}
+
+.input-color.black input::before {
+    background-color: black;
+}
+
+.input-color.red input::before {
+    background-color: red;
+}
+
+.input-color.blue input::before {
+    background-color: blue;
+}
+
+.input-color.green input::before {
+    background-color: green;
+}
+
+.input-color.purple input::before {
+    background-color: purple;
+}
+
+.input-size {
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 20px;
+}
+
+.input-size input {
+    cursor: pointer;
+    height: 0px;
+    width: 0px;
+}
+
+.input-size input::before {
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid gray;
+    content: "";
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    transition: all .2s;
+    width: 100%;
+}
+
+.input-size input:checked::before {
+    background-color: blue;
+    border-color: blue;
+    color: #FFF;
+}
+
+.input-size input:hover::before {
+    background-color: blue;
+    border-color: blue;
+    color: #FFF;
+}
+
+.input-size.small input::before {
+    content: "s";
+}
+
+.input-size.mid input::before {
+    content: "m";
+}
+
+.input-size.large input::before {
+    content: "l";
+}
+
+
