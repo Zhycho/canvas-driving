@@ -16,6 +16,8 @@ ul {
 
 #canvas {
     border: 1px solid #000;
+    display: block;
+    margin: 0 auto 16px;
 }
 
 .container {
@@ -25,7 +27,8 @@ ul {
 
 .input-list {
     display: flex;
-    margin-bottom: 20px;
+    justify-content: center;
+    margin: 0 auto 12px;
 }
 
 .input-list li {
@@ -44,10 +47,11 @@ ul {
 .input-color input {
     cursor: pointer;
     height: 0px;
+    opacity: 0;
     width: 0px;
 }
 
-.input-color input::before {
+.input-color input + span::before {
     border-radius: 50%;
     content: "";
     display: block;
@@ -60,31 +64,31 @@ ul {
     width: 100%;
 }
 
-.input-color input:hover::before {
+.input-color input:hover + span::before {
     opacity: 0.9;
 } 
 
-.input-color input:checked::before {
+.input-color input:checked + span::before {
     opacity: 1;
 }
 
-.input-color.black input::before {
+.input-color.black input + span::before {
     background-color: black;
 }
 
-.input-color.red input::before {
+.input-color.red input + span::before {
     background-color: red;
 }
 
-.input-color.blue input::before {
+.input-color.blue input + span::before {
     background-color: blue;
 }
 
-.input-color.green input::before {
+.input-color.green input + span::before {
     background-color: green;
 }
 
-.input-color.purple input::before {
+.input-color.purple input + span::before {
     background-color: purple;
 }
 
@@ -100,10 +104,11 @@ ul {
 .input-size input {
     cursor: pointer;
     height: 0px;
+    opacity: 0;
     width: 0px;
 }
 
-.input-size input::before {
+.input-size input + span::before {
     align-items: center;
     background-color: transparent;
     border: 1px solid gray;
@@ -119,28 +124,52 @@ ul {
     width: 100%;
 }
 
-.input-size input:checked::before {
-    background-color: blue;
-    border-color: blue;
+.input-size input:checked + span::before {
+    background-color: SkyBlue;
+    border-color: SkyBlue;
     color: #FFF;
 }
 
-.input-size input:hover::before {
-    background-color: blue;
-    border-color: blue;
+.input-size input:hover + span::before {
+    background-color: SkyBlue;
+    border-color: SkyBlue;
     color: #FFF;
+    font-family: serif;
 }
 
-.input-size.small input::before {
+.input-size.small input + span::before {
     content: "s";
 }
 
-.input-size.mid input::before {
+.input-size.mid input + span::before {
     content: "m";
 }
 
-.input-size.large input::before {
+.input-size.large input + span::before {
     content: "l";
 }
 
+.btn-group {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
 
+.btn {
+    background: #FFF;
+    border: 1px solid gray;
+    cursor: pointer;
+    margin: 0 4px;
+    padding: 4px 12px;
+    transition: all .2s;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:hover {
+    background: SkyBlue;
+    border-color: SkyBlue;
+    color: #FFF;
+}

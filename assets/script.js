@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
 
-
+    // рисование
     canvas.onmousedown = startDraw;
+    canvas.onmousemove = draw;
     canvas.onmouseup = stopDraw;
     canvas.onmouseout = stopDraw;
-    canvas.onmousemove = draw;
 
     let isDraw = false;
 
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         isDraw = false;
     }
 
-
+    // смена цвета кисти
     const colorInputs = document.querySelectorAll('.input-color');
     context.strokeStyle = 'black';
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
+    // смена толщины кисти
     const sizeInputs = document.querySelectorAll('.input-size');
     context.lineWidth = 1;
 
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     });
 
-    
+    // очистка
     const clearButton = document.querySelector('#cleaner');
     context.fillStyle = 'white';
 
@@ -60,17 +60,47 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
 
+    // сохранение
+    if (localStorage.getItem('saved-images') == null) {
+        localStorage.setItem('saved-images', JSON.stringify([]));
+    }
+
+    if (localStorage.getItem('last-image') == null) {
+        localStorage.setItem('last-image', '');
+    }
 
     const saverButton = document.querySelector('#saver')
     saverButton.addEventListener('click', function() {
-        let dataURL = canvas.toDataURL();
+        const dataURL = canvas.toDataURL();
 
-        localStorage.setItem('img', dataURL)
+        localStorage.setItem('last-image', dataURL);
     });
 
-    let pic = new Image();
-    pic.src = localStorage.getItem('img');
-    pic.onload = function() {
-        context.drawImage(pic, 0, 0);
+    // синхронизация вкладок при сохранении  
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'last-image') {
+            
+            // сохранение предыдущего рисунка
+            const savedImages = JSON.parse(localStorage.getItem('saved-images'));
+            const prevImg = canvas.toDataURL();
+            savedImages.push(prevImg);
+            localStorage.setItem('saved-images', JSON.stringify(savedImages));
+
+            const lastImage = new Image();
+            lastImage.src = localStorage.getItem('last-image');
+            lastImage.onload = function() {
+                context.drawImage(lastImage, 0, 0);
+            }
+        }
+    });
+
+    // вывод последнего изображения при загрузке
+    if (localStorage.getItem('last-image') != false) {
+        const lastImage = new Image();
+
+        lastImage.src = localStorage.getItem('last-image');
+        lastImage.onload = function() {
+            context.drawImage(lastImage, 0, 0);
+        }
     }
 });
